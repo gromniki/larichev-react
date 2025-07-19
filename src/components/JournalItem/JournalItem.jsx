@@ -5,11 +5,11 @@ function JournalItem({ title, text, date }) {
 
   return (
     <>
-      <h2 className="journal-item__header">{title}</h2>
-      <div className="journal-item__body">
+      <span className="journal-item__header">{title}</span>
+      <span className="journal-item__body">
         <time className="journal-item__date" datetime="{formattedDate}">{formattedDate}</time>
-        <div className="journal-item__text">{text}</div>
-      </div>
+        <span className="journal-item__text">{text}</span>
+      </span>
     </>
   );
 }

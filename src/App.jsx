@@ -18,10 +18,10 @@ function App() {
 	];
 
   // Мой вариант
-  function formattedDate() {
-    const formatter = new Intl.DateTimeFormat('ru-RU', { /* Параметры форматирования */ });
-    return formatter.format(new Date());
-  }
+  // function formattedDate() {
+  //   const formatter = new Intl.DateTimeFormat('ru-RU', { /* Параметры форматирования */ });
+  //   return formatter.format(new Date());
+  // }
 
   return (
     <>
