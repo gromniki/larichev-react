@@ -7,7 +7,7 @@ function JournalItem({ title, text, date }) {
     <>
       <span className="journal-item__header">{title}</span>
       <span className="journal-item__body">
-        <time className="journal-item__date" datetime="{formattedDate}">{formattedDate}</time>
+        <time className="journal-item__date">{formattedDate}</time>
         <span className="journal-item__text">{text}</span>
       </span>
     </>
