@@ -1,20 +1,28 @@
 import './App.css';
 import Button from './components/Button/Button';
 import CardButton from './components/CardButton/CardButton';
-import JournalItem from './components/JournalItem/JournalItem';
 import Paragraph from './components/Paragraph/Paragraph';
 import Title from './components/Title/Title';
+import Body from './layouts/Body/Body';
+import LeftPanel from './layouts/LeftPanel/LeftPanel';
+import Header from './components/Header/Header';
+import JournalAddButton from './components/JournalAddButton/JournalAddButton';
+import JournalList from './components/JournalList/JournalList';
+import JournalItem from './components/JournalItem/JournalItem';
+import JournalForm from './components/JournalForm/JournalForm';
+import { useState } from 'react';
+
 
 function App() {
   const data = [
 		{
 			title: 'Подготовка к обновлению курсов',
-			text: 'Горные походы открывают удивительные природные ландшафты',
+			text: 'Думал, что очень много времени',
 			date: new Date()
 		},
 		{
 			title: 'Поход в годы',
-			text: 'Думал, что очень много времени',
+      text: 'Горные походы открывают удивительные природные ландшафты',
 			date: new Date()
 		}
 	];
@@ -31,6 +39,13 @@ function App() {
     text: 'Введите название фильма, сериала или мультфильма для поиска и добавления в избранное',
     button: 'Искать',
   };
+
+  const [inputData, setInputData] = useState('');
+
+  const inputChange = (event) => {
+    setInputData(event.target.value);
+    console.log(inputData);
+  }
   
 
   // Мой вариант
@@ -40,29 +55,40 @@ function App() {
   // }
 
   return (
-    <>
-      <h1>{pageTitle}</h1>
-      <p>{pageDescription}</p>
+    <div className='app'>
+      <LeftPanel>
+        <Header/>
+        <JournalAddButton/>
+        <JournalList>
+          <CardButton>
+            <JournalItem
+              title={data[0].title}
+              text={data[0].text}
+              date={data[0].date}
+            />
+          </CardButton>
+          <CardButton>
+            <JournalItem
+              title={data[1].title}
+              text={data[1].text}
+              date={data[1].date}
+            />
+          </CardButton>
+        </JournalList>
+      </LeftPanel>
       
-      <Title title={search.title}/>
-      <Paragraph paragraph={search.text} size={16}/>
-      <Button btnName={search.button}/>
+      <Body>
+        <h1>{pageTitle}</h1>
+        <p>{pageDescription}</p>
+        <Button/>
 
-      <CardButton>
-        <JournalItem
-          title={data[0].title}
-          text={data[0].text}
-          date={data[0].date}
-        />
-      </CardButton>
-      <CardButton>
-        <JournalItem
-          title={data[1].title}
-          text={data[1].text}
-          date={data[1].date}
-        />
-      </CardButton>
-    </>
+        <JournalForm/>
+        
+        <Title title={search.title}/>
+        <Paragraph paragraph={search.text} size={16}/>
+        <Button btnName={search.button}/>
+      </Body>
+    </div>
   );
 }
 
